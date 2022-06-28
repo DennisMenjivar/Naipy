@@ -18,8 +18,8 @@ export default function CardComponent({ children }) {
   if (children.hide)
     return (
       <View style={styles.hideCard}>
-        <Text style={styles.numberTop}>N</Text>
-        <Text style={styles.symbol}>.</Text>
+        <Text style={styles.numberTopHide}>N</Text>
+        <Text style={styles.symbolHide}>❓</Text>
         <Text style={styles.numberBottomHide}>N</Text>
       </View>
     );
@@ -36,16 +36,15 @@ export default function CardComponent({ children }) {
 const styles = StyleSheet.create({
   card: {
     width: '95%',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     borderRadius: '7%',
     padding: '15%',
     borderColor: 'black',
     borderWidth: 2,
-    // maxHeight: '100%',
   },
   hideCard: {
     width: '95%',
-    backgroundColor: 'red',
+    backgroundColor: '#AD0804',
     borderRadius: '7%',
     padding: '15%',
     borderColor: 'black',
@@ -54,23 +53,33 @@ const styles = StyleSheet.create({
   numberTop: {
     fontSize: 50,
     fontWeight: 'bold',
-    // fontFamily: 'Lucida Console", "Courier New", monospace',
+  },
+  numberTopHide: {
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: 'red',
   },
   symbol: {
     fontSize: 50,
     textAlign: 'center',
     padding: '20%',
+    fontWeight: 'bold',
+  },
+  symbolHide: {
+    fontSize: 50,
+    textAlign: 'center',
+    padding: '20%',
+    fontWeight: 'bold',
   },
   numberBottom: {
     transform: [{ rotate: '180deg' }],
     fontSize: 50,
     fontWeight: 'bold',
-    // fontFamily: 'Lucida Console", "Courier New", monospace',
   },
   numberBottomHide: {
     fontSize: 50,
     fontWeight: 'bold',
-    // fontFamily: 'Lucida Console", "Courier New", monospace',
     color: 'red',
+    textAlign: 'right',
   },
 });

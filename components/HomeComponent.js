@@ -1,6 +1,6 @@
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, Text } from 'react-native';
 import { Button } from 'react-native-elements';
-import { View, Text } from '../components/Themed';
+import { View } from '../components/Themed';
 import CardsComponent from '../components/CardsComponent';
 import cards from '../json/cards';
 import { useLoadedAssets } from '../hooks/useLoadedAssets';
@@ -41,8 +41,8 @@ export default function HomeComponent() {
       setRightCard(tempRightCard);
       setAlert({
         active: true,
-        msg: `${rightCard.card.name} is grater than ${leftCard.card.name}.`,
-        subMsg: `You won ${counter} times.`,
+        msg: `${rightCard.card.name} is grater than ${leftCard.card.name}`,
+        subMsg: `You won ${counter} ${counter > 1 ? 'times.' : 'time.'}`,
       });
     }
   };
@@ -69,8 +69,8 @@ export default function HomeComponent() {
       setRightCard(tempRightCard);
       setAlert({
         active: true,
-        msg: `${rightCard.card.name} is less than ${leftCard.card.name}.`,
-        subMsg: `You won ${counter} times.`,
+        msg: `${rightCard.card.name} is less than ${leftCard.card.name}`,
+        subMsg: `You won ${counter} ${counter > 1 ? 'times.' : 'time.'}`,
       });
     }
   };
@@ -83,7 +83,10 @@ export default function HomeComponent() {
         style={styles.backgroundImage}
       />
       <View style={styles.header}>
-        <Text style={styles.counter}>🥃x{counter}</Text>
+        <Text style={styles.icon}>
+          🥃
+          <Text style={styles.counter}>x{counter}</Text>
+        </Text>
       </View>
       <View style={styles.cardsContainter}>
         <CardsComponent children={{ leftCard, rightCard }}></CardsComponent>
@@ -95,7 +98,7 @@ export default function HomeComponent() {
             onPress={() => determineLessThan()}
             buttonStyle={styles.button}
             title={(res) => {
-              return <Text style={styles.textButton}>{'- Less than'}</Text>;
+              return <Text style={styles.textButton}>{'< Less than'}</Text>;
             }}
           />
         </View>
@@ -105,7 +108,7 @@ export default function HomeComponent() {
             onPress={() => determineGreaterThan()}
             buttonStyle={styles.button}
             title={(res) => {
-              return <Text style={styles.textButton}>{'+ Greater than'}</Text>;
+              return <Text style={styles.textButton}>{'> Greater than'}</Text>;
             }}
           />
         </View>
@@ -121,7 +124,7 @@ export default function HomeComponent() {
         showConfirmButton={true}
         // cancelText="No, cancel"
         confirmText="Thank you!"
-        // confirmButtonColor="#DD6B55"
+        confirmButtonColor="#DD6B55"
         onCancelPressed={() => {
           setLeftCard(rightCard);
           setRightCard({
@@ -142,9 +145,16 @@ export default function HomeComponent() {
         }}
         contentContainerStyle={{
           width: '100%',
-          //   height: '100%',
-          //   alignItems: 'center',
-          //   justifyContent: 'center',
+        }}
+        titleStyle={{
+          fontWeight: 'bold',
+        }}
+        confirmButtonStyle={{
+          margin: '5%',
+        }}
+        confirmButtonTextStyle={{
+          margin: '15%',
+          textAlign: 'center',
         }}
       />
     </View>
@@ -187,13 +197,23 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     margin: 0.5,
+    opacity: 0.4,
+    backgroundColor: 'white',
   },
   textButton: {
-    color: 'white',
+    color: '#053A2B',
+    fontSize: 20,
   },
   counter: {
     textAlign: 'center',
+    fontSize: 30,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  icon: {
+    textAlign: 'center',
     fontSize: 40,
+    color: 'white',
   },
   backgroundImage: {
     width: '100%',
