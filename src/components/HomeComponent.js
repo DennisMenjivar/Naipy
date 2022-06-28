@@ -1,7 +1,7 @@
 import { StyleSheet, Image, Text } from 'react-native';
 import { Button } from 'react-native-elements';
-import { View } from '../components/Themed';
-import CardsComponent from '../components/CardsComponent';
+import { View } from './Themed';
+import CardsComponent from './CardsComponent';
 import cards from '../json/cards';
 import { useLoadedAssets } from '../hooks/useLoadedAssets';
 import AwesomeAlert from 'react-native-awesome-alerts';
