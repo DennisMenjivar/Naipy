@@ -38,11 +38,45 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused
+                ? 'ios-information-circle'
+                : 'ios-information-circle-outline';
+            } else if (route.name === 'Settings') {
+              iconName = focused ? 'ios-list-box' : 'ios-list';
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'white',
+          tabBarInactiveTintColor: 'gray',
+        })}
+      >
         <Tab.Screen
           name="Naipy"
           component={HomeScreen}
-          options={{ tabBarIcon: makeIconRender('home') }}
+          options={{
+            tabBarIcon: makeIconRender('rocket'),
+            headerStyle: {
+              backgroundColor: '#053A2B',
+              opacity: 0.9,
+              borderBottomColor: '#09503D',
+            },
+            headerTitleStyle: {
+              color: 'white',
+              fontWeight: 'bold',
+            },
+            tabBarStyle: {
+              backgroundColor: '#09503D',
+              borderTopColor: '#09503D',
+            },
+          }}
         />
         {/* <Tab.Screen
           name="Profile"

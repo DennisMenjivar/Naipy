@@ -9,10 +9,10 @@ export default function CardsComponent({ children }) {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.cardContainer, { backgroundColor: 'red' }]}>
+      <View style={[styles.cardContainer, { backgroundColor: 'transparent' }]}>
         <CardComponent children={leftCard}></CardComponent>
       </View>
-      <View style={[styles.cardContainer, { backgroundColor: 'yellow' }]}>
+      <View style={[styles.cardContainer, { backgroundColor: 'transparent' }]}>
         <CardComponent children={rightCard}></CardComponent>
       </View>
     </View>
@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'purple',
     width: '100%',
     height: '100%',
     flex: 2,

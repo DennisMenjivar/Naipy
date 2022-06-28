@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
-import { Button, Text } from 'react-native-elements';
-import { View } from '../components/Themed';
+import { StyleSheet, Image } from 'react-native';
+import { Button } from 'react-native-elements';
+import { View, Text } from '../components/Themed';
 import CardsComponent from '../components/CardsComponent';
 import cards from '../json/cards';
 import { useLoadedAssets } from '../hooks/useLoadedAssets';
@@ -74,11 +74,14 @@ export default function HomeComponent() {
       });
     }
   };
-
   const { active, msg, subMsg } = alert;
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require('../imgs/NaipyBackground.jpg')}
+        style={styles.backgroundImage}
+      />
       <View style={styles.header}>
         <Text style={styles.counter}>🥃x{counter}</Text>
       </View>
@@ -153,12 +156,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'top',
-    backgroundColor: 'red',
     width: '100%',
   },
   header: {
     height: '15%',
-    backgroundColor: 'green',
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -166,7 +167,6 @@ const styles = StyleSheet.create({
   cardsContainter: {
     width: '100%',
     height: '70%',
-    backgroundColor: 'yellow',
   },
   footer: {
     width: '100%',
@@ -180,7 +180,6 @@ const styles = StyleSheet.create({
   buttonRow: {
     width: '49.80%',
     height: '100%',
-    backgroundColor: 'white',
     flexDirection: 'col',
     justifyContent: 'center',
   },
@@ -195,5 +194,10 @@ const styles = StyleSheet.create({
   counter: {
     textAlign: 'center',
     fontSize: 40,
+  },
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
   },
 });
