@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Text, View, ImageBackground, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,10 +11,15 @@ function HomeScreen() {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'red',
+        backgroundColor: '#053A2B',
       }}
     >
-      <HomeComponent></HomeComponent>
+      <ImageBackground
+        source={require('./src/imgs/NaipyBackground.jpg')}
+        style={styles.backgroundImage}
+      >
+        <HomeComponent></HomeComponent>
+      </ImageBackground>
     </View>
   );
 }
@@ -93,3 +98,11 @@ function makeIconRender(name) {
     <MaterialCommunityIcons name={name} color={color} size={size} />
   );
 }
+
+const styles = StyleSheet.create({
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+  },
+});

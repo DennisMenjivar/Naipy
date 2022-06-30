@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   card: {
     width: '95%',
     backgroundColor: 'transparent',
-    borderRadius: '7%',
+    borderRadius: 30,
     padding: '15%',
     borderColor: 'black',
     borderWidth: 2,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   hideCard: {
     width: '95%',
     backgroundColor: '#AD0804',
-    borderRadius: '7%',
+    borderRadius: 30,
     padding: '15%',
     borderColor: 'black',
     borderWidth: 2,

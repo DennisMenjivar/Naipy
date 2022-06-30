@@ -1,10 +1,10 @@
-import { StyleSheet, Image, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { Button } from 'react-native-elements';
-import { View } from './Themed';
-import CardsComponent from './CardsComponent';
+import { View } from '../components/Themed';
+import CardsComponent from '../components/CardsComponent';
 import cards from '../json/cards';
 import { useLoadedAssets } from '../hooks/useLoadedAssets';
-import AwesomeAlert from 'react-native-awesome-alerts';
+// import AwesomeAlert from 'react-native-awesome-alerts';
 import { useState } from 'react';
 
 export default function HomeComponent() {
@@ -42,7 +42,7 @@ export default function HomeComponent() {
       setAlert({
         active: true,
         msg: `${rightCard.card.name} is grater than ${leftCard.card.name}`,
-        subMsg: `You won ${counter} ${counter > 1 ? 'times.' : 'time.'}`,
+        subMsg: `, you won ${counter} ${counter > 1 ? 'times.' : 'time.'}`,
       });
     }
   };
@@ -70,7 +70,7 @@ export default function HomeComponent() {
       setAlert({
         active: true,
         msg: `${rightCard.card.name} is less than ${leftCard.card.name}`,
-        subMsg: `You won ${counter} ${counter > 1 ? 'times.' : 'time.'}`,
+        subMsg: `, you won ${counter} ${counter > 1 ? 'times.' : 'time.'}`,
       });
     }
   };
@@ -78,10 +78,6 @@ export default function HomeComponent() {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../imgs/NaipyBackground.jpg')}
-        style={styles.backgroundImage}
-      />
       <View style={styles.header}>
         <Text style={styles.icon}>
           🥃
@@ -91,29 +87,59 @@ export default function HomeComponent() {
       <View style={styles.cardsContainter}>
         <CardsComponent children={{ leftCard, rightCard }}></CardsComponent>
       </View>
-      <View style={styles.footer}>
-        {/* LESS THAN BUTTON */}
-        <View style={styles.buttonRow}>
+      {/* --DURING THE GAME-- */}
+      {!active && (
+        <View style={styles.footer}>
+          {/* LESS THAN BUTTON */}
+          <View style={styles.buttonRow}>
+            <Button
+              onPress={() => determineLessThan()}
+              buttonStyle={styles.button}
+              title={(res) => {
+                return <Text style={styles.textButton}>{'< Less than'}</Text>;
+              }}
+            />
+          </View>
+          {/* GREATER THAN */}
+          <View style={styles.buttonRow}>
+            <Button
+              onPress={() => determineGreaterThan()}
+              buttonStyle={styles.button}
+              title={(res) => {
+                return (
+                  <Text style={styles.textButton}>{'> Greater than'}</Text>
+                );
+              }}
+            />
+          </View>
+        </View>
+      )}
+      {/* --WHILE IS LOADING TO CONTINUE-- */}
+      {active && (
+        <View style={styles.footerConfirm}>
           <Button
-            onPress={() => determineLessThan()}
-            buttonStyle={styles.button}
+            onPress={() => {
+              setLeftCard(rightCard);
+              setRightCard({
+                card: cards[Math.floor(Math.random() * cards.length)],
+                hide: true,
+              });
+              setAlert({ active: false, msg: '' });
+              setCounter(1);
+            }}
+            buttonStyle={styles.buttonConfirm}
             title={(res) => {
-              return <Text style={styles.textButton}>{'< Less than'}</Text>;
+              return (
+                <Text style={styles.textButtonConfirm}>
+                  {msg}
+                  {subMsg}
+                </Text>
+              );
             }}
           />
         </View>
-        {/* GREATER THAN */}
-        <View style={styles.buttonRow}>
-          <Button
-            onPress={() => determineGreaterThan()}
-            buttonStyle={styles.button}
-            title={(res) => {
-              return <Text style={styles.textButton}>{'> Greater than'}</Text>;
-            }}
-          />
-        </View>
-      </View>
-      <AwesomeAlert
+      )}
+      {/* <AwesomeAlert
         show={active}
         showProgress={false}
         title={`${msg}`}
@@ -156,7 +182,7 @@ export default function HomeComponent() {
           margin: '15%',
           textAlign: 'center',
         }}
-      />
+      /> */}
     </View>
   );
 }
@@ -165,7 +191,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'top',
+    justifyContent: 'center',
     width: '100%',
   },
   header: {
@@ -184,13 +210,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 2,
-    flexDirection: 'row',
+    // flexDirection: 'row',
     flexWrap: 'wrap',
+  },
+  footerConfirm: {
+    width: '100%',
+    height: '15%',
   },
   buttonRow: {
     width: '49.80%',
     height: '100%',
-    flexDirection: 'col',
+    // flexDirection: 'col',
     justifyContent: 'center',
   },
   button: {
@@ -200,9 +230,21 @@ const styles = StyleSheet.create({
     opacity: 0.4,
     backgroundColor: 'white',
   },
+  buttonConfirm: {
+    width: '100%',
+    height: '100%',
+    margin: 0.5,
+    opacity: 0.4,
+    backgroundColor: 'red',
+  },
   textButton: {
-    color: '#053A2B',
-    fontSize: 20,
+    // color: '#053A2B',
+    color: 'color',
+    fontSize: 23,
+  },
+  textButtonConfirm: {
+    color: 'white',
+    fontSize: 23,
   },
   counter: {
     textAlign: 'center',
@@ -214,10 +256,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 40,
     color: 'white',
-  },
-  backgroundImage: {
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
   },
 });

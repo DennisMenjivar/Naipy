@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     flex: 2,
-    flexDirection: 'col',
+    // flexDirection: 'col',
     flexWrap: 'wrap',
   },
   cardContainer: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     width: '95%',
-    borderRadius: '7%',
+    borderRadius: 30,
     height: '100%',
     position: 'absolute',
   },
