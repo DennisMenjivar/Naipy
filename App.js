@@ -3,8 +3,9 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeComponent from './src/components/HomeComponent';
+import GameOptionsComponents from './src/components/GameOptionsComponents';
 
-function HomeScreen() {
+const HomeScreen = (children) => {
   return (
     <View
       style={{
@@ -18,22 +19,31 @@ function HomeScreen() {
         source={require('./src/imgs/NaipyBackground.jpg')}
         style={styles.backgroundImage}
       >
-        <HomeComponent></HomeComponent>
+        {!children.route.params ? (
+          <GameOptionScreen></GameOptionScreen>
+        ) : (
+          <HomeComponent></HomeComponent>
+        )}
       </ImageBackground>
     </View>
   );
-}
+};
 
-function SettingsScreen() {
+function GameOptionScreen() {
   return (
     <View
       style={{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#053A2B',
       }}
     >
-      <Text>Settings!</Text>
+      <ImageBackground
+        source={require('./src/imgs/NaipyBackground.jpg')}
+        style={styles.backgroundImage}
+      ></ImageBackground>
+      <GameOptionsComponents></GameOptionsComponents>
     </View>
   );
 }
@@ -84,9 +94,9 @@ export default function App() {
           }}
         />
         {/* <Tab.Screen
-          name="Profile"
-          component={SettingsScreen}
-          options={{ tabBarIcon: makeIconRender('cog') }}
+          name="game-options"
+          component={GameOptionScreen}
+          options={{ tabBarIcon: makeIconRender('cog'), title: 'Game' }}
         /> */}
       </Tab.Navigator>
     </NavigationContainer>
