@@ -156,50 +156,6 @@ export default function HomeComponent({ children }) {
           />
         </View>
       )}
-      {/* <AwesomeAlert
-        show={active}
-        showProgress={false}
-        title={`${msg}`}
-        message={`${subMsg}`}
-        closeOnTouchOutside={false}
-        closeOnHardwareBackPress={false}
-        // showCancelButton={true}
-        showConfirmButton={true}
-        // cancelText="No, cancel"
-        confirmText="Thank you!"
-        confirmButtonColor="#DD6B55"
-        onCancelPressed={() => {
-          setLeftCard(rightCard);
-          setRightCard({
-            card: cards[Math.floor(Math.random() * cards.length)],
-            hide: true,
-          });
-          setAlert({ active: false, msg: '' });
-          setCounter(1);
-        }}
-        onConfirmPressed={() => {
-          setLeftCard(rightCard);
-          setRightCard({
-            card: cards[Math.floor(Math.random() * cards.length)],
-            hide: true,
-          });
-          setAlert({ active: false, msg: '' });
-          setCounter(1);
-        }}
-        contentContainerStyle={{
-          width: '100%',
-        }}
-        titleStyle={{
-          fontWeight: 'bold',
-        }}
-        confirmButtonStyle={{
-          margin: '5%',
-        }}
-        confirmButtonTextStyle={{
-          margin: '15%',
-          textAlign: 'center',
-        }}
-      /> */}
     </View>
   );
 }
@@ -214,6 +170,8 @@ const styles = StyleSheet.create({
   header: {
     height: '15%',
     width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   cardsContainter: {
     width: '100%',
@@ -271,6 +229,52 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 40,
     color: 'white',
-    textAlignVertical: 'bottom',
   },
 });
+
+{
+  /* <AwesomeAlert
+        show={active}
+        showProgress={false}
+        title={`${msg}`}
+        message={`${subMsg}`}
+        closeOnTouchOutside={false}
+        closeOnHardwareBackPress={false}
+        // showCancelButton={true}
+        showConfirmButton={true}
+        // cancelText="No, cancel"
+        confirmText="Thank you!"
+        confirmButtonColor="#DD6B55"
+        onCancelPressed={() => {
+          setLeftCard(rightCard);
+          setRightCard({
+            card: cards[Math.floor(Math.random() * cards.length)],
+            hide: true,
+          });
+          setAlert({ active: false, msg: '' });
+          setCounter(1);
+        }}
+        onConfirmPressed={() => {
+          setLeftCard(rightCard);
+          setRightCard({
+            card: cards[Math.floor(Math.random() * cards.length)],
+            hide: true,
+          });
+          setAlert({ active: false, msg: '' });
+          setCounter(1);
+        }}
+        contentContainerStyle={{
+          width: '100%',
+        }}
+        titleStyle={{
+          fontWeight: 'bold',
+        }}
+        confirmButtonStyle={{
+          margin: '5%',
+        }}
+        confirmButtonTextStyle={{
+          margin: '15%',
+          textAlign: 'center',
+        }}
+      /> */
+}
