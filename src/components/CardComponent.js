@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
   numberBottomHide: {
     fontSize: 50,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#09503D',
     textAlign: 'right',
+    textShadowColor: 'red',
   },
 });
