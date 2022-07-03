@@ -6,9 +6,11 @@ import cards from '../json/cards';
 import { useLoadedAssets } from '../hooks/useLoadedAssets';
 // import AwesomeAlert from 'react-native-awesome-alerts';
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export default function HomeComponent({ children }) {
-  console.log('Children: ', children.route.params.option.icon);
+  const navigation = useNavigation();
+
   const {
     leftCard,
     setLeftCard,
@@ -80,9 +82,23 @@ export default function HomeComponent({ children }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.icon}>
-          {children.route.params.option.icon}
+        <Text
+          onPress={() =>
+            navigation.navigate('Naipy', { option: '', compo: 'game-option' })
+          }
+          style={styles.icon}
+        >
+          {children.route.params?.option?.icon}
           <Text style={styles.counter}>x{counter}</Text>
+          <Text
+            style={{
+              fontSize: 12,
+              textAlignVertical: 'top',
+            }}
+          >
+            {'\n'}
+            {children.route.params?.option?.description}
+          </Text>
         </Text>
       </View>
       <View style={styles.cardsContainter}>
@@ -198,8 +214,6 @@ const styles = StyleSheet.create({
   header: {
     height: '15%',
     width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   cardsContainter: {
     width: '100%',
@@ -239,8 +253,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
   textButton: {
-    // color: '#053A2B',
-    color: 'color',
+    color: '#053A2B',
     fontSize: 23,
   },
   textButtonConfirm: {
@@ -252,10 +265,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: 'white',
     fontWeight: 'bold',
+    textAlignVertical: 'bottom',
   },
   icon: {
     textAlign: 'center',
     fontSize: 40,
     color: 'white',
+    textAlignVertical: 'bottom',
   },
 });

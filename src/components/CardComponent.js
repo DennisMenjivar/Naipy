@@ -37,18 +37,23 @@ const styles = StyleSheet.create({
   card: {
     width: '95%',
     backgroundColor: 'transparent',
-    borderRadius: 30,
+    borderRadius: 16,
     padding: '15%',
     borderColor: 'black',
     borderWidth: 2,
   },
   hideCard: {
     width: '95%',
-    backgroundColor: '#AD0804',
-    borderRadius: 30,
+    backgroundColor: '#AD0804', //color de la carta
+    opacity: 0.9,
+    borderRadius: 16,
     padding: '15%',
-    borderColor: 'black',
+    borderColor: '#09503D',
     borderWidth: 2,
+    shadowColor: 'black',
+    shadowOffset: { width: -5, height: 2 },
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
   },
   numberTop: {
     fontSize: 50,
@@ -57,7 +62,8 @@ const styles = StyleSheet.create({
   numberTopHide: {
     fontSize: 50,
     fontWeight: 'bold',
-    color: 'red',
+    color: '#09503D',
+    position: 'relative',
   },
   symbol: {
     fontSize: 50,
@@ -79,7 +85,7 @@ const styles = StyleSheet.create({
   numberBottomHide: {
     fontSize: 50,
     fontWeight: 'bold',
-    color: 'red',
+    color: 'white',
     textAlign: 'right',
   },
 });

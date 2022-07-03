@@ -7,7 +7,7 @@ export default function GameOptionsComponents() {
   const navigation = useNavigation();
 
   const submit = (gameOption) => {
-    navigation.navigate('Naipy', { option: gameOption });
+    navigation.navigate('Naipy', { option: gameOption, compo: 'naipy' });
   };
 
   return (
@@ -31,7 +31,12 @@ export default function GameOptionsComponents() {
               buttonStyle={styles.button}
               title={
                 <Text
-                  style={{ color: '#053A2B', fontSize: 22, fontWeight: 'bold' }}
+                  style={{
+                    color: '#053A2B',
+                    fontSize: 22,
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                  }}
                 >
                   {opt.name}
                   <Text
@@ -42,6 +47,16 @@ export default function GameOptionsComponents() {
                     }}
                   >
                     {opt.icon}
+                  </Text>
+                  {'\n'}
+                  <Text
+                    style={{
+                      textAlign: 'left',
+                      fontSize: 17,
+                      fontWeight: 'normal',
+                    }}
+                  >
+                    {opt.description}
                   </Text>
                 </Text>
               }
@@ -68,7 +83,6 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red',
   },
   option: {
     width: '100%',

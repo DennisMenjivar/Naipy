@@ -19,10 +19,10 @@ const HomeScreen = (children) => {
         source={require('./src/imgs/NaipyBackground.jpg')}
         style={styles.backgroundImage}
       >
-        {!children.route.params ? (
-          <GameOptionScreen></GameOptionScreen>
-        ) : (
+        {children?.route?.params?.compo === 'naipy' ? (
           <HomeComponent children={children}></HomeComponent>
+        ) : (
+          <GameOptionScreen></GameOptionScreen>
         )}
       </ImageBackground>
     </View>
