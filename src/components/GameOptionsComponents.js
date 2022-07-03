@@ -2,20 +2,32 @@ import { StyleSheet, View, Text } from 'react-native';
 import options from '../json/options';
 import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
+
 export default function GameOptionsComponents() {
   const navigation = useNavigation();
 
-  const submit = () => {
-    navigation.navigate('Naipy', { option: 'HomeScreen' });
+  const submit = (gameOption) => {
+    navigation.navigate('Naipy', { option: gameOption });
   };
 
   return (
     <View style={styles.container}>
       <View style={[styles.cardContainer, { backgroundColor: 'transparent' }]}>
+        <Text
+          style={{
+            color: 'white',
+            padding: 10,
+            fontSize: 24,
+            fontWeight: 'bold',
+            marginBottom: 20,
+          }}
+        >
+          ¿What do you want to play for?
+        </Text>
         {options.map((opt, key) => (
           <View style={styles.option} key={key}>
             <Button
-              onPress={() => submit()}
+              onPress={() => submit(opt)}
               buttonStyle={styles.button}
               title={
                 <Text

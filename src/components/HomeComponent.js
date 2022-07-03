@@ -7,7 +7,8 @@ import { useLoadedAssets } from '../hooks/useLoadedAssets';
 // import AwesomeAlert from 'react-native-awesome-alerts';
 import { useState } from 'react';
 
-export default function HomeComponent() {
+export default function HomeComponent({ children }) {
+  console.log('Children: ', children.route.params.option.icon);
   const {
     leftCard,
     setLeftCard,
@@ -80,7 +81,7 @@ export default function HomeComponent() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.icon}>
-          🥃
+          {children.route.params.option.icon}
           <Text style={styles.counter}>x{counter}</Text>
         </Text>
       </View>

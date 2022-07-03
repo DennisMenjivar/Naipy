@@ -22,7 +22,7 @@ const HomeScreen = (children) => {
         {!children.route.params ? (
           <GameOptionScreen></GameOptionScreen>
         ) : (
-          <HomeComponent></HomeComponent>
+          <HomeComponent children={children}></HomeComponent>
         )}
       </ImageBackground>
     </View>
