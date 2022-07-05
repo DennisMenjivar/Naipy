@@ -20,6 +20,9 @@ export default function GameOptionsComponents() {
             fontSize: 24,
             fontWeight: 'bold',
             marginBottom: 20,
+            textShadowColor: 'rgba(0, 0, 0, 0.75)',
+            textShadowOffset: { width: 10, height: 5 },
+            textShadowRadius: 7,
           }}
         >
           ¿What do you want to play for?
@@ -54,6 +57,7 @@ export default function GameOptionsComponents() {
                       textAlign: 'left',
                       fontSize: 17,
                       fontWeight: 'normal',
+                      textAlign: 'center',
                     }}
                   >
                     {opt.description}

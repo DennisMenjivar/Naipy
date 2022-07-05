@@ -4,18 +4,22 @@ const options = [
     name: 'Kisses',
     description: 'You have to give kisses (2 players Max).',
     icon: '💋',
+    buttonMessage: 'give * kiss',
   },
   {
     id: 2,
     name: 'Water',
-    description: 'You have to drink the times (Infinite players).',
+    description:
+      'You have to drink the amounts of times listed when lost (Infinite players).',
     icon: '🥛',
+    buttonMessage: 'drink * time',
   },
   {
     id: 3,
-    name: 'Clothes',
-    description: 'You have to take off a cloth (Optional players).',
+    name: 'Cloth',
+    description: 'You have to take off an item of clothing (Optional players).',
     icon: '👙',
+    buttonMessage: 'take off an item of clothing',
   },
 ];
 export default options;

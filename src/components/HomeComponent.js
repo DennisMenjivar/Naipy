@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import { View } from '../components/Themed';
 import CardsComponent from '../components/CardsComponent';
@@ -44,12 +44,20 @@ export default function HomeComponent({ children }) {
       setRightCard(tempRightCard);
       setAlert({
         active: true,
-        msg: `${rightCard.card.name} is grater than ${leftCard.card.name}`,
-        subMsg: `, you won ${counter} ${counter > 1 ? 'times.' : 'time.'}`,
+        msg: `${rightCard.card.name} is grater than ${leftCard.card.name}, `,
+        subMsg: String(
+          `${children.route.params?.option?.buttonMessage}${
+            counter > 1 &&
+            children.route.params?.option?.buttonMessage !== 'take off a cloth'
+              ? 's.'
+              : '.'
+          }`
+        )
+          .replace('kisss', 'kisses')
+          .replace('*', counter.toString()), //`, you won ${counter} ${counter > 1 ? 'times.' : 'time.'}`,
       });
     }
   };
-
   const determineGreaterThan = () => {
     const tempRightCard = { ...rightCard };
     if (leftCard.card.value < rightCard.card.value) {
@@ -72,8 +80,17 @@ export default function HomeComponent({ children }) {
       setRightCard(tempRightCard);
       setAlert({
         active: true,
-        msg: `${rightCard.card.name} is less than ${leftCard.card.name}`,
-        subMsg: `, you won ${counter} ${counter > 1 ? 'times.' : 'time.'}`,
+        msg: `${rightCard.card.name} is less than ${leftCard.card.name}, `,
+        subMsg: String(
+          `${children.route.params?.option?.buttonMessage}${
+            counter > 1 &&
+            children.route.params?.option?.buttonMessage !== 'take off a cloth'
+              ? 's.'
+              : '.'
+          }`
+        )
+          .replace('kisss', 'kisses')
+          .replace('*', counter.toString()),
       });
     }
   };
@@ -81,13 +98,13 @@ export default function HomeComponent({ children }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text
-          onPress={() =>
-            navigation.navigate('Naipy', { option: '', compo: 'game-option' })
-          }
-          style={styles.icon}
-        >
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('Naipy', { option: '', compo: 'game-option' })
+        }
+        style={styles.header}
+      >
+        <Text style={styles.icon}>
           {children.route.params?.option?.icon}
           <Text style={styles.counter}>x{counter}</Text>
           <Text
@@ -100,7 +117,7 @@ export default function HomeComponent({ children }) {
             {children.route.params?.option?.description}
           </Text>
         </Text>
-      </View>
+      </TouchableOpacity>
       <View style={styles.cardsContainter}>
         <CardsComponent children={{ leftCard, rightCard }}></CardsComponent>
       </View>
@@ -213,6 +230,7 @@ const styles = StyleSheet.create({
   textButton: {
     color: '#053A2B',
     fontSize: 23,
+    fontWeight: '500',
   },
   textButtonConfirm: {
     color: 'white',
@@ -224,6 +242,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlignVertical: 'bottom',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: 4, height: 5 },
+    textShadowRadius: 7,
   },
   icon: {
     textAlign: 'center',
