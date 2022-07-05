@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text } from 'react-native';
-import options from '../json/options';
+// import options from '../json/options';
 import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 // import { useEffect } from 'react';
@@ -12,14 +12,16 @@ export default function GameOptionsComponents() {
 
   useEffect(() => {
     const url =
-      'https://raw.githubusercontent.com/DennisMenjivar/Naipy/main/src/json/options.js';
+      'https://raw.githubusercontent.com/DennisMenjivar/Naipy/main/src/json/options.json';
     axiosClient
       .get(url, {
         'Content-Type': 'application/json',
       })
       .then((result) => {
         setOption(result.data);
-        console.log(result.data);
+        result.data.filter((element) => {
+          console.log('Element');
+        });
       })
       .catch((error) => {});
   }, []);
