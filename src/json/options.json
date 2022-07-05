@@ -20,5 +20,5 @@
     description: 'You have to take off an item of clothing (Optional players).',
     icon: '👙',
     buttonMessage: 'take off an item of clothing',
-  },
+  }
 ]
