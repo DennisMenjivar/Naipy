@@ -12,6 +12,7 @@ export function useLoadedAssets() {
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
+    console.disableYellowBox = true;
     async function loadResourcesAndDataAsync() {
       console.disableYellowBox = true;
       try {

@@ -2,9 +2,27 @@ import { StyleSheet, View, Text } from 'react-native';
 import options from '../json/options';
 import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
+// import { useEffect } from 'react';
+import axiosClient from '../config/axiosClient';
+import { useEffect, useState } from 'react';
 
 export default function GameOptionsComponents() {
   const navigation = useNavigation();
+  const [option, setOption] = useState([]);
+
+  useEffect(() => {
+    const url =
+      'https://raw.githubusercontent.com/DennisMenjivar/Naipy/main/src/json/options.js';
+    axiosClient
+      .get(url, {
+        'Content-Type': 'application/json',
+      })
+      .then((result) => {
+        setOption(result.data);
+        console.log(result.data);
+      })
+      .catch((error) => {});
+  }, []);
 
   const submit = (gameOption) => {
     navigation.navigate('Naipy', { option: gameOption, compo: 'naipy' });
@@ -27,7 +45,7 @@ export default function GameOptionsComponents() {
         >
           ¿What do you want to play for?
         </Text>
-        {options.map((opt, key) => (
+        {/* {option?.map((opt, key) => (
           <View style={styles.option} key={key}>
             <Button
               onPress={() => submit(opt)}
@@ -66,7 +84,7 @@ export default function GameOptionsComponents() {
               }
             ></Button>
           </View>
-        ))}
+        ))} */}
       </View>
     </View>
   );
