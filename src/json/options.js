@@ -1,4 +1,4 @@
-const options = [
+[
   {
     id: 1,
     name: 'Kisses',
@@ -21,5 +21,4 @@ const options = [
     icon: '👙',
     buttonMessage: 'take off an item of clothing',
   },
-];
-export default options;
+]
