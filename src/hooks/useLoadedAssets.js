@@ -2,6 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import * as Font from 'expo-font';
 // import * as SplashScreen from 'expo-splash-screen';
 import React, { useState } from 'react';
+import { LogBox } from 'react-native';
 import cards from '../json/cards';
 
 export function useLoadedAssets() {
@@ -12,9 +13,8 @@ export function useLoadedAssets() {
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
-    console.disableYellowBox = true;
+    LogBox.ignoreAllLogs();
     async function loadResourcesAndDataAsync() {
-      console.disableYellowBox = true;
       try {
         // SplashScreen.preventAutoHideAsync();
         setLeftCard({
