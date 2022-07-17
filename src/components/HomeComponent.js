@@ -44,7 +44,7 @@ export default function HomeComponent({ children }) {
       setRightCard(tempRightCard);
       setAlert({
         active: true,
-        msg: `${rightCard.card.name} is grater than ${leftCard.card.name}, `,
+        msg: `${rightCard.card.name} is greater than ${leftCard.card.name}, `,
         subMsg: String(
           `${children.route.params?.option?.buttonMessage}${
             counter > 1 &&
