@@ -10,7 +10,7 @@
     "id": 2,
     "name": "Water",
     "description": "You have to drink the amounts of times listed when lost (Infinite players).",
-    "icon": "🍹",
+    "icon": "🥛",
     "buttonMessage": "drink * time"
   },
   {
