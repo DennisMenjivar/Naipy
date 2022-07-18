@@ -41,7 +41,7 @@ export default function GameOptionsComponents() {
             textShadowRadius: 7,
           }}
         >
-          ¿What do you want to play for?
+          What do you want to play for?
         </Text>
         {options?.map((opt, key) => (
           <View style={styles.option} key={key}>
